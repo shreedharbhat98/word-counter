@@ -4,7 +4,9 @@
     "version": "1.0",
     "description": "Adds a red border to all webpages matching mozilla.org.",
     "permissions": [
-        "contextMenus"
+        "contextMenus",
+        "tabs",
+        "activeTab"
     ],
     "icons": {
         "48": "icons/48.png"
@@ -12,7 +14,7 @@
     "content_scripts": [
         {
             "matches": [
-                "*://*.mozilla.org/*"
+                "<all_urls>"
             ],
             "js": [
                 "popup.js"
