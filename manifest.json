@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "Word Counter",
+    "version": "1.0",
+    "description": "Adds a red border to all webpages matching mozilla.org.",
+    "permissions": ["contextMenus"],
+    "icons": {
+        "48": "icons/48.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.mozilla.org/*"
+            ],
+            "js": [
+                "popup.js"
+            ]
+        }
+    ],
+    "browser-action":{
+        "browser_style" : true,
+        "default_icon" : {
+            "48": "icons/48.png"
+        },
+        "default_title":"Word Counter",
+        "default_popup":"/html/popup.html"
+    }
+}
