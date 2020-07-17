@@ -2,11 +2,15 @@
     "manifest_version": 2,
     "name": "Word Counter",
     "version": "1.0",
-    "description": "Adds a red border to all webpages matching mozilla.org.",
+    "description": "Word counter for web pages",
     "permissions": [
         "contextMenus",
         "tabs",
-        "activeTab"
+        "activeTab",
+        "http://*/*",
+        "https://*/*",
+        "https://docs.google.com/",
+        "clipboardWrite"
     ],
     "icons": {
         "48": "icons/48.png"
@@ -17,7 +21,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "popup.js"
+                "popup/popup.js"
             ]
         }
     ],
@@ -27,6 +31,6 @@
             "48": "icons/48.png"
         },
         "default_title": "Word Counter",
-        "default_popup": "/html/popup.html"
+        "default_popup": "/popup/popup.html"
     }
 }
