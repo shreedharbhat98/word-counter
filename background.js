@@ -1,4 +1,4 @@
-document.body.style.border = "5px solid blue";
+// document.body.style.border = "5px solid blue";
 // function copySelection() {
 //     var selectedText = window.getSelection().toString().trim();//     if (selectedText) {
 //         document.execCommand("Copy");
@@ -19,10 +19,12 @@ browser.menus
         id: "log-selection",
         title: "Word-Counter",
         type: "normal",
-        contexts: ["selection"]
+        contexts: ['selection']
     }, 
     onCreated);  
 
     browser.menus.onClicked.addListener((info, tab) => {
         browser.browserAction.openPopup()
+         console.log("Item " + info.menuItemId + " clicked " +
+              "in tab " + tab.id)
 })
