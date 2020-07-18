@@ -1,3 +1,4 @@
+var synth = window.speechSynthesis;
 var input = document.querySelector("#input-val")
 var countButton = document.querySelector("#count-button")
 var listenButton = document.querySelector("#listen-button")
@@ -8,6 +9,7 @@ var wordDiv = document.querySelector("#words")
 var sentencesDiv = document.querySelector("#sentences")
 var paragraph = document.querySelector("#paragraph")
 var readingTime = document.querySelector("#readability")
+var list = document.querySelector("#list")
 
 
 countButton.addEventListener('click', countWords)
@@ -33,6 +35,8 @@ function countWords() {
     sentencesDiv.setAttribute("style", "display:block")
     paragraph.setAttribute("style", "display:block")
     readingTime.setAttribute("style", "display:block")
+
+
     chars.textContent = "Characters : " + (input.value.length)
     var words = input.value.match(/\b[-?(\w+)?]+\b/gi);
     if (words) {
@@ -41,7 +45,6 @@ function countWords() {
       wordDiv.textContent = "Words length : " + 0;
     }
 
-
     if (words) {
       var sentences = input.value.split(/[.|!|?]+/g);
       sentencesDiv.textContent = "Sentence Length : " + (sentences.length - 1);
@@ -49,14 +52,12 @@ function countWords() {
       sentencesDiv.textContent = "Sentence Length : " + 0
     }
 
-
     if (words) {
       var paragraphs = input.value.replace(/\n$/gm, '').split(/\n/);
       paragraph.textContent = "Paragraphs : " + paragraphs.length;
     } else {
       paragraph.textContent = "Paragraphs : " + 0
     }
-
 
     if (words) {
       var seconds = Math.floor(words.length * 60 / 200);
@@ -68,14 +69,13 @@ function countWords() {
         readingTime.textContent = seconds + " s" + " Reading";
       }
     }
+
+
+
   }
 }
 
 listenButton.addEventListener('click', listenText)
-
-
-var synth = window.speechSynthesis;
-
 function listenText() {
   speak();
 }
@@ -107,21 +107,12 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
 }
 
-
-
 function speak() {
   if (synth.speaking) {
-    console.error('speechSynthesis.speaking');
     return;
   }
   if (input.value !== '') {
     var utterThis = new SpeechSynthesisUtterance(input.value);
-    utterThis.onend = function (event) {
-      console.log('SpeechSynthesisUtterance.onend');
-    }
-    utterThis.onerror = function (event) {
-      console.error('SpeechSynthesisUtterance.onerror');
-    }
     var selectedOption = "English_(Great_Britain) "
     for (i = 0; i < voices.length; i++) {
       if (voices[i].name === selectedOption) {
@@ -133,4 +124,36 @@ function speak() {
     utterThis.rate = 0.9;
     synth.speak(utterThis);
   }
+}
+
+input.addEventListener('dblclick', getWord)
+
+function getWord() {
+  list.innerHTML=""
+  var ans = getSelectionText()
+  fetch("http://api.urbandictionary.com/v0/define?term="+ans)
+  .then(res=>res.json())
+  .then(res=>res.list.map(item=>{
+    var li = document.createElement("li")
+    li.textContent = item.definition
+    list.appendChild(li)
+  }))
+  .catch(err=>console.log(err))
+
+}
+
+function getSelectionText() {
+  var text = "";
+  var activeEl = document.activeElement;
+  var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
+  if (
+    (activeElTagName == "textarea") || (activeElTagName == "input" &&
+      /^(?:text|search|password|tel|url)$/i.test(activeEl.type)) &&
+    (typeof activeEl.selectionStart == "number")
+  ) {
+    text = activeEl.value.slice(activeEl.selectionStart, activeEl.selectionEnd);
+  } else if (window.getSelection) {
+    text = window.getSelection().toString();
+  }
+  return text;
 }
