@@ -10,7 +10,8 @@
         "http://*/*",
         "https://*/*",
         "https://docs.google.com/",
-        "clipboardWrite"
+        "clipboardWrite",
+        "menus"
     ],
     "icons": {
         "48": "icons/48.png"
@@ -19,12 +20,14 @@
         {
             "matches": [
                 "<all_urls>"
-            ],
-            "js": [
-                "popup/popup.js"
             ]
         }
     ],
+    "background": {
+        "scripts": [
+            "popup.js"
+        ]
+    },
     "browser_action": {
         "browser_style": true,
         "default_icon": {
