@@ -22,16 +22,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col text-left" id="data">
+        <div class="col text-center" id="data">
+            <div class="row">
+                <div id="chars" class="col-6"></div>
+                <div id="words" class="col-6"></div>
+                <div id="sentences" class="col-6"></div>
+                <div id="paragraph" class="col-6"></div>
+                <div id="readability" class="col-12"></div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col text-center">
-            <button type="button" onclick="getData()" class="btn btn-outline-primary ">Count</button>
+            <button type="button" id="count-button" class="btn btn-outline-primary ">Count</button>
         </div>
     </div>
-
-    </script>
+    <script type="text/javascript" src="popup.js"></script>
 </body>
 
 </html>
