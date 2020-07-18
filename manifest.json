@@ -10,7 +10,7 @@
         "menus"
     ],
     "icons": {
-        "48": "icons/48.png"
+        "48": "icons/48.svg"
     },
     "background": {
         "scripts": [
@@ -30,7 +30,7 @@
     "browser_action": {
         "browser_style": true,
         "default_icon": {
-            "48": "icons/48.png"
+            "48": "icons/48.svg"
         },
         "default_title": "Word Counter",
         "default_popup": "/popup/popup.html"

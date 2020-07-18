@@ -1,4 +1,3 @@
-
 var input = document.querySelector("#input-val")
 var countButton = document.querySelector("#count-button")
 var listenButton = document.querySelector("#listen-button")
@@ -114,4 +113,3 @@ function speak(){
     synth.speak(utterThis);
   }
 }
-
