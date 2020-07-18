@@ -4,39 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Red+Rose&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="popup.css">
     <title>Word Counter</title>
 </head>
 
 <body>
-    <h2 class="text-center px-5 py-3">Word Counter</h2>
+    <h2 class="header">Word Counter</h2>
     <div class="row">
         <div class="col">
             <div class="input-group">
-                <textarea id="input-val" placeholder="Paste your text here..." class="form-control mx-3 mb-2" aria-label="With textarea"></textarea>
+                <textarea id="input-val" placeholder="Paste your text here..." class="form-control"></textarea>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col text-center" id="data">
-            <div class="row p-4">
-                <div id="chars" class="col-6 "></div>
-                <div id="words" class="col-6"></div>
-                <div id="sentences" class="col-6"></div>
-                <div id="paragraph" class="col-6"></div>
-                <div id="readability" class="col-12"></div>
+        <div class="col" id="data">
+            <div class="data-row">
+                <div id="chars" class="contents "></div>
+                <div id="words" class="contents"></div>
+                <div id="sentences" class="contents"></div>
+                <div id="paragraph" class="contents"></div>
             </div>
+            <div id="readability" class="readability"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col text-center">
-            <button type="button" id="count-button" class="btn btn-outline-primary ">Count</button>
+        <div class="col btn-wrapper">
+            <button type="button" id="count-button" class="btn">Count</button>
+            <button type="button" id="listen-button" class="btn">Listen</button>
         </div>
     </div>
     <script type="text/javascript" src="popup.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=1jwE3Ce7"></script>
 </body>
 
 </html>
