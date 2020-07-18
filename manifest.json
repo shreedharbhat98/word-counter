@@ -4,20 +4,21 @@
     "version": "1.0",
     "description": "Word counter for web pages",
     "permissions": [
-        "contextMenus",
         "tabs",
         "activeTab",
         "http://*/*",
         "https://*/*",
         "https://docs.google.com/",
-        "clipboardWrite",
         "menus",
-        "storage",
-        "tts",
         "webNavigation"
     ],
     "icons": {
         "48": "icons/48.png"
+    },
+    "background": {
+        "scripts": [
+                "background.js"
+            ]
     },
     "content_scripts": [
         {
