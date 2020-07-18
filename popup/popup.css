@@ -3,11 +3,12 @@ body{
     min-height: 200px;
     width: 500px;
     font-family: 'Roboto', sans-serif;
-    border:2px solid #03A9F4;
+    border:2px solid #3F51B5;
     border-style: inset;
+    background-color: #E0F7FA;
 }
 body img{
-    margin-top: 0em;
+    margin-top: -30px;
 }
 
 .header{
@@ -17,22 +18,26 @@ body img{
     text-align: center;
 }
 .form-control{
-    width: 90%;
-    border: 1px solid black;
+    width: 98%;
     padding: 5px;
     min-height: 50px;
-
+    font-size: 20px;
 }
 .data-row{
     display: grid;
     grid-template-columns: auto auto;
-    margin: auto ;
+}
+.data-row > div{
+    padding: 10px ;
+    padding-left: 20%;
+}
+.flex{
+    display: flex;
 }
 .btn{
     width: 150px;
     height: 30px;
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    color: whitesmoke;
     border-radius: 5px;
     font-weight: bold;
     margin-top: 4px;
@@ -40,11 +45,14 @@ body img{
     margin-bottom: 10px;
     text-align: center;
 }
-.btn:hover{
-        background:#34495e;
-        transition:all .5s ease;
-        color: whitesmoke;
+
+.error-msg{
+    margin-left: 30% ;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
 }
+
 .contents{
     padding: 5px;
     font-weight: bold;
@@ -55,6 +63,24 @@ body img{
     margin: auto;
     text-align: center;
 }
+.btn-wrapper :nth-child(1){
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
+}
+
+.btn-wrapper :nth-child(2){
+background: #bdc3c7;
+background: -webkit-linear-gradient(to left, #2c3e50, #bdc3c7);
+background: linear-gradient(to left, #2c3e50, #bdc3c7);
+
+}
+.btn:hover{
+    background:#34495e;
+    transition:all 1s ease;
+    color: whitesmoke;
+}
+
 .readability{
     font-weight: bold;
     padding: 5px;
