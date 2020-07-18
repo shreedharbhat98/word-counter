@@ -13,8 +13,7 @@
         "clipboardWrite",
         "menus",
         "storage",
-        "tts",
-        "webNavigation"
+        "tts"
     ],
     "icons": {
         "48": "icons/48.png"

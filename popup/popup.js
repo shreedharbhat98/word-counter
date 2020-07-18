@@ -51,8 +51,47 @@ function countWords() {
 
 }
 
-listenButton.addEventListener('click', sayWords)
+listenButton.addEventListener('click', listenText)
 
-function sayWords() {
-    responsiveVoice.speak(input.value)
-};
+
+var synth = window.speechSynthesis;
+
+function listenText() {
+    speak();
+}
+
+
+
+
+
+
+var pitch =1
+var pitchValue =1
+var rate = 1
+var rateValue = 1
+
+var voices = "English_(America)";
+
+
+
+
+function speak(){
+    if (synth.speaking) {
+        console.error('speechSynthesis.speaking');
+        return;
+    }
+    if (input.value !== '') {
+    var utterThis = new SpeechSynthesisUtterance(input.value);
+    utterThis.onend = function (event) {
+        console.log('SpeechSynthesisUtterance.onend');
+    }
+    utterThis.onerror = function (event) {
+        console.error('SpeechSynthesisUtterance.onerror');
+    }
+    utterThis.voice = voices;
+    utterThis.pitch = pitch.value;
+    utterThis.rate = rate.value;
+    synth.speak(utterThis);
+  }
+}
+
