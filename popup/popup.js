@@ -11,6 +11,12 @@ var paragraph = document.querySelector("#paragraph")
 var readingTime = document.querySelector("#readability")
 var list = document.querySelector("#list")
 
+input.addEventListener("focus", getCopiedText);
+
+function getCopiedText(){
+  navigator.clipboard.readText().then(res=> input.value = res).catch(err=>console.log(err))
+}
+
 countButton.addEventListener('click', countWords)
 function countWords() {
   if (input.value.length === 0) {
@@ -97,7 +103,7 @@ function speak() {
   }
   if (input.value !== '') {
     var utterThis = new SpeechSynthesisUtterance(input.value);
-    var selectedOption = "English_(Great_Britain) "
+    var selectedOption = "English_(America) "
     for (i = 0; i < voices.length; i++) {
       if (voices[i].name === selectedOption) {
         utterThis.voice = voices[i];
@@ -121,7 +127,7 @@ function getWord() {
   var ans = getSelectionText()
 
   var li = document.createElement("li")
-  li.innerHTML = "<span>Wiki Links &nbsp;  <a href=" + 'https://en.wikipedia.org/wiki/' + ans + ">Click here</a></span> "
+  li.innerHTML = "<span>Wiki Link &nbsp;  <a href=" + 'https://en.wikipedia.org/wiki/' + ans + ">Click here</a></span> "
   list.appendChild(li)
 
   fetch("http://api.urbandictionary.com/v0/define?term=" + ans)

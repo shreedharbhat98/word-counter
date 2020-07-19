@@ -7,7 +7,9 @@
         "http://*/*",
         "https://*/*",
         "https://docs.google.com/",
-        "menus"
+        "contextMenus",
+        "clipboardRead",
+        "clipboardWrite"
     ],
     "icons": {
         "48": "icons/w.png"

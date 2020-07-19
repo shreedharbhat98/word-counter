@@ -6,16 +6,16 @@ function onCreated() {
     console.log("Item created successfully");
   }
 }
-browser.menus
-  .create({
-    id: "log-selection",
-    title: "Word-Counter",
-    type: "normal",
-    contexts: ['selection']
-  },
-    onCreated);
 
-browser.menus.onClicked.addListener((info, tab) => {
-  browser.browserAction.openPopup()
+browser.contextMenus.create({
+  id: "log-selection",
+  title: "Word Counter",
+  contexts: ["selection"]
+}, onCreated);
+
+
+browser.contextMenus.onClicked.addListener((info, tab)=> {
+      navigator.clipboard.writeText(info.selectionText).then().catch(error=>console.log(error))
+      browser.browserAction.openPopup()
 })
 
