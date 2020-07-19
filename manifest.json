@@ -30,7 +30,7 @@
     "browser_action": {
         "browser_style": true,
         "default_icon": {
-            "48": "icons/48.svg"
+            "48": "icons/48.png"
         },
         "default_title": "Word Counter",
         "default_popup": "/popup/popup.html"
