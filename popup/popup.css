@@ -2,7 +2,10 @@ body{
     min-height: 200px;
     width: 500px;
     font-family: 'Times New Roman', Times, serif;
-    background-color: rgb(248, 248, 248);}
+    background-color: rgb(248, 248, 248);
+
+
+}
 .header{
     width:100%;
     margin: auto;
@@ -33,7 +36,11 @@ body{
     font-style: italic;
     font-family: sans-serif;
 }
-.stts {    text-align: right;}
+.stts {
+
+    text-align: right;
+
+}
 .form-control{
     width: 100%;
     padding: 5px;
@@ -65,7 +72,9 @@ body{
     padding: 0px 10px;
     margin-bottom: 10px;
     text-align: center;
-}.error-msg{
+}
+
+.error-msg{
     display: flex;
     justify-content: center;
     width:100%;
@@ -74,7 +83,12 @@ body{
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-}.contents{    padding: 5px;
+}
+
+
+.contents{
+
+    padding: 5px;
     font-weight: bold;
     font-size: 15px;
 }
@@ -89,18 +103,24 @@ body{
     background: radial-gradient(circle, rgba(2,33,115,1) 0%, rgba(2,0,36,1) 100%, rgba(114,176,246,1) 100%);
     /* background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
     background: linear-gradient(to right, #2c3e50, #bdc3c7); */
-}.btn-wrapper :nth-child(2){
+}
+
+.btn-wrapper :nth-child(2){
     font-family: 'Times New Roman', Times, serif;
     background: #bdc3c7;
     background: rgb(2,33,115);
     background: radial-gradient(circle, rgba(2,33,115,1) 0%, rgba(2,0,36,1) 100%, rgba(114,176,246,1) 100%);
     /* background: -webkit-linear-gradient(to left, #2c3e50, #bdc3c7);
-    background: linear-gradient(to left, #2c3e50, #bdc3c7); */}
+    background: linear-gradient(to left, #2c3e50, #bdc3c7); */
+
+}
 .btn:hover{
     background:#34495e;
     transition:all 1s ease;
     color: whitesmoke;
-}.readability{
+}
+
+.readability{
     font-weight: bold;
     padding: 5px;
     text-align: center;
@@ -120,7 +140,9 @@ li{
     background-color: rgb(243, 241, 241);
     padding:5px;
     margin-top: 2px;
-}#list {
+}
+
+#list {
     width: 480px;
     margin: auto;
     margin-left: -7px;
