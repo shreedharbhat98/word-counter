@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Red+Rose&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="popup.css">
     <title>Word Counter</title>
-</head>
-
-<body>
-    <img src="/icons/1.svg">
-    <div class="row">
-        <div class="col">
-            <div class="input-group">
-                <textarea id="input-val" placeholder="Paste your text here..." autofocus class="form-control"></textarea>
+</head><body>
+    <div class="header">
+        <div class="word">WORD<br>COUNTER</div>
+        <div><img src="/icons/w(1).png" alt="" height="30px"></div>
+    </div>
+    <div class="input-group">
+        <textarea id="input-val" placeholder="Paste your text here..." autofocus class="form-control"></textarea>
+        <div class="info">
+            <h5 class="clck">**Click on any words to get its meaning</h5>
+            <div class="stts">
+                <img src="/icons/TTS48.png" alt="" height="30px" width="30px" id="listen-button">
+                <img src="/icons/STT.png" alt="" height="30px" width="30px">
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col" id="data">
-            <div id="error-msg" class="error-msg"></div>
-            <div class="data-row">
-                <div id="chars" class="contents "></div>
-                <div id="words" class="contents"></div>
-                <div id="sentences" class="contents"></div>
-                <div id="paragraph" class="contents"></div>
-            </div>
-            <div id="readability" class="readability"></div>
+    <div class="col" id="data">
+        <div id="error-msg" class="error-msg"></div>
+        <div class="data-row">
+            <div id="chars" class="contents "></div>
+            <div id="words" class="contents"></div>
+            <div id="sentences" class="contents"></div>
+            <div id="paragraph" class="contents"></div>
         </div>
-        <ul id="list">
-        </ul>
+        <div id="readability" class="readability"></div>
     </div>
     <div class="row">
         <div class="col btn-wrapper">
-            <button type="button" id="count-button" class="btn">Count</button>
-            <button type="button" id="listen-button" class="btn">Listen</button>
+            <button type="button" id="count-button" class="btn">COUNT</button>
         </div>
     </div>
+    <ul id="list">
+    </ul>
     <script type="text/javascript" src="popup.js"></script>
-</body>
-
-</html>
+</body></html>

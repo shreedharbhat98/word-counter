@@ -10,10 +10,7 @@ var sentencesDiv = document.querySelector("#sentences")
 var paragraph = document.querySelector("#paragraph")
 var readingTime = document.querySelector("#readability")
 var list = document.querySelector("#list")
-
-
 countButton.addEventListener('click', countWords)
-
 function countWords() {
   if (input.value.length === 0) {
     errorMsg.setAttribute("style", "display:block")
@@ -35,31 +32,23 @@ function countWords() {
     sentencesDiv.setAttribute("style", "display:block")
     paragraph.setAttribute("style", "display:block")
     readingTime.setAttribute("style", "display:block")
-
-
     chars.textContent = "Characters : " + (input.value.length)
     var words = input.value.match(/\b[-?(\w+)?]+\b/gi);
     if (words) {
       wordDiv.textContent = "Words length : " + words.length;
     } else {
       wordDiv.textContent = "Words length : " + 0;
-    }
-
-    if (words) {
+    } if (words) {
       var sentences = input.value.split(/[.|!|?]+/g);
       sentencesDiv.textContent = "Sentence Length : " + (sentences.length - 1);
     } else {
       sentencesDiv.textContent = "Sentence Length : " + 0
-    }
-
-    if (words) {
+    } if (words) {
       var paragraphs = input.value.replace(/\n$/gm, '').split(/\n/);
       paragraph.textContent = "Paragraphs : " + paragraphs.length;
     } else {
       paragraph.textContent = "Paragraphs : " + 0
-    }
-
-    if (words) {
+    } if (words) {
       var seconds = Math.floor(words.length * 60 / 200);
       if (seconds > 59) {
         var minutes = Math.floor(seconds / 60);
@@ -70,24 +59,16 @@ function countWords() {
       }
     }
   }
-}
-
-listenButton.addEventListener('click', listenText)
+} listenButton.addEventListener('click', listenText)
 function listenText() {
   speak();
-}
-
-var voices = []
+} var voices = []
 function populateVoiceList() {
   voices = synth.getVoices()
-}
-
-populateVoiceList();
+} populateVoiceList();
 if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
-}
-
-function speak() {
+} function speak() {
   if (synth.speaking) {
     return;
   }
@@ -105,9 +86,7 @@ function speak() {
     synth.speak(utterThis);
   }
 }
-
 input.addEventListener('dblclick', getWord)
-
 function getWord() {
   list.innerHTML = ""
   var ans = getSelectionText()
@@ -119,9 +98,7 @@ function getWord() {
       list.appendChild(li)
     }))
     .catch(err => console.log(err))
-}
-
-function getSelectionText() {
+} function getSelectionText() {
   var text = "";
   var activeEl = document.activeElement;
   var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
