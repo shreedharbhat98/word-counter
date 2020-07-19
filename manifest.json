@@ -10,7 +10,7 @@
         "menus"
     ],
     "icons": {
-        "48": "icons/48.svg"
+        "48": "icons/w.png"
     },
     "background": {
         "scripts": [

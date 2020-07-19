@@ -69,9 +69,6 @@ function countWords() {
         readingTime.textContent = seconds + " s" + " Reading";
       }
     }
-
-
-
   }
 }
 
@@ -81,25 +78,8 @@ function listenText() {
 }
 
 var voices = []
-
 function populateVoiceList() {
-  voices = synth.getVoices().sort(function (a, b) {
-    const aname = a.name.toUpperCase(), bname = b.name.toUpperCase();
-    if (aname < bname) return -1;
-    else if (aname == bname) return 0;
-    else return +1;
-  });
-  for (i = 0; i < voices.length; i++) {
-    var option = document.createElement('option');
-    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-
-    if (voices[i].default) {
-      option.textContent += ' -- DEFAULT';
-    }
-
-    option.setAttribute('data-lang', voices[i].lang);
-    option.setAttribute('data-name', voices[i].name);
-  }
+  voices = synth.getVoices()
 }
 
 populateVoiceList();
@@ -129,17 +109,16 @@ function speak() {
 input.addEventListener('dblclick', getWord)
 
 function getWord() {
-  list.innerHTML=""
+  list.innerHTML = ""
   var ans = getSelectionText()
-  fetch("http://api.urbandictionary.com/v0/define?term="+ans)
-  .then(res=>res.json())
-  .then(res=>res.list.map(item=>{
-    var li = document.createElement("li")
-    li.textContent = item.definition
-    list.appendChild(li)
-  }))
-  .catch(err=>console.log(err))
-
+  fetch("http://api.urbandictionary.com/v0/define?term=" + ans)
+    .then(res => res.json())
+    .then(res => res.list.map(item => {
+      var li = document.createElement("li")
+      li.textContent = item.definition
+      list.appendChild(li)
+    }))
+    .catch(err => console.log(err))
 }
 
 function getSelectionText() {
