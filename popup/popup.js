@@ -10,6 +10,7 @@ var sentencesDiv = document.querySelector("#sentences")
 var paragraph = document.querySelector("#paragraph")
 var readingTime = document.querySelector("#readability")
 var list = document.querySelector("#list")
+
 countButton.addEventListener('click', countWords)
 function countWords() {
   if (input.value.length === 0) {
@@ -32,23 +33,36 @@ function countWords() {
     sentencesDiv.setAttribute("style", "display:block")
     paragraph.setAttribute("style", "display:block")
     readingTime.setAttribute("style", "display:block")
+
+    //Characters length
     chars.textContent = "Characters : " + (input.value.length)
     var words = input.value.match(/\b[-?(\w+)?]+\b/gi);
+
+    // Calculate the words length
     if (words) {
-      wordDiv.textContent = "Words length : " + words.length;
+      wordDiv.textContent = "Words : " + words.length;
     } else {
-      wordDiv.textContent = "Words length : " + 0;
-    } if (words) {
+      wordDiv.textContent = "Words : " + 0;
+    }
+
+    // Calculate the sentence length
+    if (words) {
       var sentences = input.value.split(/[.|!|?]+/g);
-      sentencesDiv.textContent = "Sentence Length : " + (sentences.length - 1);
+      sentencesDiv.textContent = "Sentences : " + (sentences.length - 1);
     } else {
-      sentencesDiv.textContent = "Sentence Length : " + 0
-    } if (words) {
+      sentencesDiv.textContent = "Sentences : " + 0
+    }
+
+    //calculate the nnumber of paragraphs
+    if (words) {
       var paragraphs = input.value.replace(/\n$/gm, '').split(/\n/);
       paragraph.textContent = "Paragraphs : " + paragraphs.length;
     } else {
       paragraph.textContent = "Paragraphs : " + 0
-    } if (words) {
+    }
+
+    //Calculate the estimated reading time
+    if (words) {
       var seconds = Math.floor(words.length * 60 / 200);
       if (seconds > 59) {
         var minutes = Math.floor(seconds / 60);
@@ -59,16 +73,25 @@ function countWords() {
       }
     }
   }
-} listenButton.addEventListener('click', listenText)
+}
+
+// text to speech function start
+listenButton.addEventListener('click', listenText)
 function listenText() {
   speak();
-} var voices = []
+}
+
+var voices = []
 function populateVoiceList() {
   voices = synth.getVoices()
-} populateVoiceList();
+}
+
+populateVoiceList();
 if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
-} function speak() {
+}
+
+function speak() {
   if (synth.speaking) {
     return;
   }
@@ -86,10 +109,21 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
     synth.speak(utterThis);
   }
 }
+// text to speech function end
+
+
+// Getting the word definitions from dictionary
+
 input.addEventListener('dblclick', getWord)
+
 function getWord() {
   list.innerHTML = ""
   var ans = getSelectionText()
+
+  var li = document.createElement("li")
+  li.innerHTML = "<span>Wiki Links &nbsp;  <a href=" + 'https://en.wikipedia.org/wiki/' + ans + ">Click here</a></span> "
+  list.appendChild(li)
+
   fetch("http://api.urbandictionary.com/v0/define?term=" + ans)
     .then(res => res.json())
     .then(res => res.list.map(item => {
@@ -98,7 +132,9 @@ function getWord() {
       list.appendChild(li)
     }))
     .catch(err => console.log(err))
-} function getSelectionText() {
+}
+
+function getSelectionText() {
   var text = "";
   var activeEl = document.activeElement;
   var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
